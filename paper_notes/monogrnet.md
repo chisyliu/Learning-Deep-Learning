@@ -7,6 +7,8 @@ tl;dr: Use the same network to estimate instance depth, 2D and 3D bbox.
 #### Overall impression
 The authors raises a critical issue in the current depth estimation that the evaluation metrics are not focused on instance level depth estimation. That means all SOTA methods are sub-optimal in terms of estimating instance level depth. This point echoes mine that the pixel wise depth map need finetune for 3D object detection, as opposed to freezing it as done in [pseudo-lidar end2end](pseudo_lidar_e2e.md).
 
+The depth estimation is instance based sparse depth info. --> There should be a way to marry depth estimation and 3D object detection together. Or is this sparse depth info is already enough? This is the first tunable depth estimation in almost all mono3DOD research. Most just use pretrained depth estimation off the shelf.
+
 However the ablation study is a bit insufficient. It did not show what are the main reasons for missed detection. Is it due to the sub-par 2D object detector? 
 
 #### Key ideas
@@ -25,4 +27,4 @@ However the ablation study is a bit insufficient. It did not show what are the m
 
 
 #### Notes
-- Q: why pick regressing 8 corners? The regressed 8 corners (16 DoF) may not form a 3D bbox anyway. Maybe regressing 7 DoF 3D bbox is a better idea (c.f., [frustum pointnet](frustum_pointnet.md) and (psedudo-lidar end2end)[pseudo_lidar_e2e.md]).
+- Q: why pick regressing 8 corners? The regressed 8 corners (16 DoF) may not form a 3D bbox anyway. Maybe regressing 7 DoF 3D bbox is a better idea (c.f., [frustum pointnet](frustum_pointnet.md) and [psedudo-lidar end2end](pseudo_lidar_e2e.md)).
